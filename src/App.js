@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      top: 10,
+      left: 10
+    }
+  }
+
+  handleMouseMove = (e) => {
+    e.persist();
+    this.setState({
+      top: e.pageY,
+      left: e.pageX
+    })
+  }
+
+  render() {
+    const { top, left } = this.state;
+
+    return (
+        <div className="main-div"
+             onMouseMove={this.handleMouseMove}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+          <div className="running-div"
+              style={{
+                top: top,
+                left: left
+              }}
+          >
+              This text runs behind the cursor!!!
+          </div>
+
+        </div>
+    )
+  }
 }
 
 export default App;
