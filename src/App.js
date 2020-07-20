@@ -9,8 +9,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      top: 10,
-      left: 10
+      top: 0,
+      left: 0
     }
   }
 
